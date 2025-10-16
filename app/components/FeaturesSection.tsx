@@ -1,32 +1,43 @@
 import { Container, Row, Col } from "react-bootstrap";
 
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+  color: string;
+}
+
 export default function FeaturesSection(): JSX.Element {
-  const features = [
-  {
-    icon: "fas fa-heartbeat",
-    title: "Quality Care",
-    description: "Providing exceptional medical care with compassion and expertise for all our patients.",
-    color: "primary" // Use your existing color classes
-  },
-  {
-    icon: "fas fa-user-md",
-    title: "Expert Doctors",
-    description: "Our team of experienced healthcare professionals is dedicated to your well-being.",
-    color: "success"
-  },
-  {
-    icon: "fas fa-clock",
-    title: "24/7 Service",
-    description: "Round-the-clock medical services to ensure you receive care when you need it most.",
-    color: "warning"
-  },
-  {
-    icon: "fas fa-hand-holding-heart",
-    title: "Patient Support",
-    description: "Comprehensive support system for patients and caregivers throughout their journey.",
-    color: "info"
-  }
-];
+  const features: Feature[] = [
+    {
+      icon: "fas fa-heartbeat",
+      title: "Quality Care",
+      description:
+        "Providing exceptional medical care with compassion and expertise for all our patients.",
+      color: "primary",
+    },
+    {
+      icon: "fas fa-user-md",
+      title: "Expert Doctors",
+      description:
+        "Our team of experienced healthcare professionals is dedicated to your well-being.",
+      color: "success",
+    },
+    {
+      icon: "fas fa-clock",
+      title: "24/7 Service",
+      description:
+        "Round-the-clock medical services to ensure you receive care when you need it most.",
+      color: "warning",
+    },
+    {
+      icon: "fas fa-hand-holding-heart",
+      title: "Patient Support",
+      description:
+        "Comprehensive support system for patients and caregivers throughout their journey.",
+      color: "info",
+    },
+  ];
 
   return (
     <section className="pq-features-section py-5">
@@ -36,7 +47,8 @@ export default function FeaturesSection(): JSX.Element {
             <span className="pq-section-badge">Why Choose Us</span>
             <h2 className="pq-section-title">Exceptional Healthcare Experience</h2>
             <p className="pq-section-description">
-              We are committed to providing the highest quality medical care with compassion and innovation.
+              We are committed to providing the highest quality medical care with
+              compassion and innovation.
             </p>
           </Col>
         </Row>
@@ -52,8 +64,7 @@ export default function FeaturesSection(): JSX.Element {
   );
 }
 
-
-  function FeatureCard({ feature }: { feature: any }) {
+function FeatureCard({ feature }: { feature: Feature }) {
   return (
     <div className="pq-feature-card">
       <div className="pq-feature-icon-wrapper">

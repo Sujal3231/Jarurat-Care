@@ -26,7 +26,7 @@ export default function TestimonialsSection(): JSX.Element {
   ];
 
   return (
-    <section className="pq-testimonials-section py-5">
+    <section className="pq-testimonials-section py-5 my-5">
       <Container>
         <Row className="justify-content-center mb-5">
           <Col lg={8} className="text-center">

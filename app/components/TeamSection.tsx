@@ -1,7 +1,13 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
 
+interface TeamMember {
+  name: string;
+  position: string;
+  image: string;
+}
+
 export default function TeamSection(): JSX.Element {
-  const teamMembers = [
+  const teamMembers: TeamMember[] = [
     {
       name: "Olivia Mestreza",
       position: "Patient Support Lead",
@@ -59,7 +65,7 @@ export default function TeamSection(): JSX.Element {
 }
 
 // Sub-component for individual team member cards
-function TeamMemberCard({ member }: { member: any }) {
+function TeamMemberCard({ member }: { member: TeamMember }) {
   return (
     <div className="pq-team-item">
       <Card className="border-0 shadow-sm h-100 pq-team-card">

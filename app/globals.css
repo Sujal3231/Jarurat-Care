@@ -219,8 +219,11 @@ body {
   background: #e2e8f0;
   color: #4a5568;
   padding: 8px 20px;
+  font-weight: 600;
   border-radius: 50px;
   margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .pq-section-title,
@@ -234,6 +237,8 @@ body {
 
 .pq-section-title {
   font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
 }
 
 .pq-hero-title {
@@ -469,8 +474,8 @@ body {
 }
 
 .pq-testimonial-avatar img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
   border-radius: 50%;
 }

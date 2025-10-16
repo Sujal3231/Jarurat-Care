@@ -15,8 +15,9 @@ export default function AboutHero(): JSX.Element {
             <p className="lead mb-0">
               At Jarurat Care Foundation, we understand that facing cancer can
               be overwhelming, and no one should have to go through it alone.
-              That's why we've made it our mission to stand by those affected
-              by cancer, offering unwavering support every step of the way.
+              That&apos;s why we&apos;ve made it our mission to stand by those
+              affected by cancer, offering unwavering support every step of the
+              way.
             </p>
           </Col>
         </Row>
