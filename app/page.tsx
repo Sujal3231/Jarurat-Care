@@ -7,7 +7,7 @@ import ServicesSection from "./components/ServicesSection";
 import CTASection from "./components/HomeCTASection";
 import TestimonialsSection from "./components/TestimonialsSection";
 
-export default function Home(): JSX.Element {
+export default function Home() {
   return (
     <>
       <HeroSlider />
