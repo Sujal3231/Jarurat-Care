@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import React, { useState, useRef, ReactElement } from "react";
 import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 import { PatientFormData } from "@/types/patient";
 
@@ -14,7 +14,7 @@ export default function AddPatientForm({
   show,
   onHide,
   onAddPatient,
-}: AddPatientFormProps): JSX.Element {
+}: AddPatientFormProps): ReactElement  {
   const [formData, setFormData] = useState<PatientFormData>({
     name: "",
     age: "",
