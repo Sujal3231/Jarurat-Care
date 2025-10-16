@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 
-export default function AboutHero(): JSX.Element {
+export default function AboutHero() {
   return (
     <section className="pq-bg-gradient-primary text-white py-5">
       <Container>

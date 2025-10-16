@@ -1,20 +1,19 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
 import Link from "next/link";
 
-interface Service {
+type Service = {
   icon: string;
   title: string;
   description: string;
   features: string[];
-}
+};
 
-export default function ServicesSection(): JSX.Element {
+export default function ServicesSection() {
   const services: Service[] = [
     {
       icon: "fas fa-stethoscope",
       title: "Medical Consultation",
-      description:
-        "Professional medical consultations with experienced healthcare providers.",
+      description: "Professional medical consultations with experienced healthcare providers.",
       features: ["Expert Diagnosis", "Personalized Treatment", "Follow-up Care"],
     },
     {
@@ -26,13 +25,8 @@ export default function ServicesSection(): JSX.Element {
     {
       icon: "fas fa-pills",
       title: "Medication Management",
-      description:
-        "Comprehensive medication guidance and management services.",
-      features: [
-        "Prescription Management",
-        "Dosage Guidance",
-        "Side Effect Monitoring",
-      ],
+      description: "Comprehensive medication guidance and management services.",
+      features: ["Prescription Management", "Dosage Guidance", "Side Effect Monitoring"],
     },
   ];
 
@@ -44,8 +38,7 @@ export default function ServicesSection(): JSX.Element {
             <span className="pq-section-badge">Our Services</span>
             <h2 className="pq-section-title">Comprehensive Healthcare Solutions</h2>
             <p className="pq-section-description">
-              We offer a wide range of medical services to meet all your healthcare
-              needs with excellence and care.
+              We offer a wide range of medical services to meet all your healthcare needs with excellence and care.
             </p>
           </Col>
         </Row>
@@ -69,9 +62,7 @@ function ServiceCard({ service }: { service: Service }) {
           <i className={service.icon}></i>
         </div>
         <Card.Title className="pq-service-title">{service.title}</Card.Title>
-        <Card.Text className="pq-service-description">
-          {service.description}
-        </Card.Text>
+        <Card.Text className="pq-service-description">{service.description}</Card.Text>
         <ul className="pq-service-features">
           {service.features.map((feature, idx) => (
             <li key={idx}>

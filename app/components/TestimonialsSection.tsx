@@ -1,32 +1,40 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
 
-export default function TestimonialsSection(): JSX.Element {
-  const testimonials = [
+type Testimonial = {
+  name: string;
+  role: string;
+  content: string;
+  rating: number;
+  image: string;
+};
+
+export default function TestimonialsSection() {
+  const testimonials: Testimonial[] = [
     {
       name: "Sarah Johnson",
       role: "Patient",
       content: "The care I received at Jarurat Care was exceptional. The doctors were compassionate and professional.",
       rating: 5,
-      image: "/testimonials/sarah.jpg"
+      image: "/testimonials/sarah.jpg",
     },
     {
       name: "Michael Chen",
       role: "Family Member",
       content: "Outstanding support for my father during his treatment. The team went above and beyond.",
       rating: 5,
-      image: "/testimonials/michael.jpg"
+      image: "/testimonials/michael.jpg",
     },
     {
       name: "Priya Sharma",
       role: "Patient",
       content: "The 24/7 support system made all the difference in my recovery journey. Highly recommended!",
       rating: 5,
-      image: "/testimonials/priya.jpg"
-    }
+      image: "/testimonials/priya.jpg",
+    },
   ];
 
   return (
-    <section className="pq-testimonials-section py-5 my-5">
+    <section className="pq-testimonials-section py-5">
       <Container>
         <Row className="justify-content-center mb-5">
           <Col lg={8} className="text-center">
@@ -49,7 +57,7 @@ export default function TestimonialsSection(): JSX.Element {
   );
 }
 
-function TestimonialCard({ testimonial }: { testimonial: any }) {
+function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
     <Card className="pq-testimonial-card border-0 shadow-sm h-100">
       <Card.Body className="p-4">
@@ -63,13 +71,13 @@ function TestimonialCard({ testimonial }: { testimonial: any }) {
         </Card.Text>
         <div className="pq-testimonial-author d-flex align-items-center">
           <div className="pq-testimonial-avatar me-3">
-            <img 
-              src={testimonial.image} 
+            <img
+              src={testimonial.image}
               alt={testimonial.name}
               className="rounded-circle"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
+                target.style.display = "none";
               }}
             />
           </div>

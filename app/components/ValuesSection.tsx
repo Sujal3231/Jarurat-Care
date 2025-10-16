@@ -1,88 +1,46 @@
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
-export default function ValuesSection(): JSX.Element {
-  const values = [
-    {
-      letter: "R",
-      title: "Reach",
-      description: "We actively connect with cancer patients, caregivers, and communities across India, ensuring that our support is accessible to those who need it most.",
-      color: "primary",
-      icon: "fas fa-network-wired",
-    },
-    {
-      letter: "I",
-      title: "Impact",
-      description: "We focus on delivering meaningful interventions that make a real difference in the lives of those affected by cancer, from emotional support to practical care.",
-      color: "success",
-      icon: "fas fa-bullseye",
-    },
-    {
-      letter: "S",
-      title: "Sustain",
-      description: "We are committed to providing ongoing assistance, ensuring that our programs and services offer continuous care and stability throughout the cancer journey.",
-      color: "warning",
-      icon: "fas fa-infinity",
-    },
-    {
-      letter: "E",
-      title: "Evolve",
-      description: "We adapt and grow to meet the changing needs of the cancer community, continuously improving our services and expanding our reach.",
-      color: "info",
-      icon: "fas fa-seedling",
-    },
+type ValueItem = {
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+};
+
+export default function ValuesSection() {
+  const values: ValueItem[] = [
+    { title: "Compassion", description: "We treat every patient with empathy and care.", icon: "fas fa-heart", color: "danger" },
+    { title: "Excellence", description: "Striving for the highest quality in healthcare services.", icon: "fas fa-star", color: "warning" },
+    { title: "Integrity", description: "We maintain honesty and transparency in everything we do.", icon: "fas fa-shield-alt", color: "primary" },
+    { title: "Innovation", description: "Constantly improving through technology and new ideas.", icon: "fas fa-lightbulb", color: "success" },
   ];
 
   return (
-    <section className="py-5 bg-white">
+    <section className="pq-values-section py-5 bg-light">
       <Container>
-        <Row className="justify-content-center mb-5">
-          <Col lg={8} className="text-center">
-            <span className="pq-badge bg-primary text-white px-3 py-2 rounded-pill mb-3 d-inline-block">
-              Our Values
-            </span>
-            <h2 className="display-6 fw-bold mb-3">
-              The Principles That Guide Everything We Do
-            </h2>
-            <p className="text-muted">
-              Our core values shape our approach to cancer care and support
+        <Row className="justify-content-center mb-5 text-center">
+          <Col lg={8}>
+            <span className="pq-section-badge">Our Core Values</span>
+            <h2 className="pq-section-title">What Drives Us</h2>
+            <p className="pq-section-description">
+              At Jarurat Care, our values guide every decision we make and every patient we care for.
             </p>
           </Col>
         </Row>
-
         <Row className="g-4">
           {values.map((value, index) => (
-            <ValueCard key={index} value={value} />
+            <Col lg={3} md={6} key={index}>
+              <div className="pq-value-card text-center p-4 shadow-sm rounded h-100">
+                <div className={`pq-value-icon mb-3 text-white bg-${value.color} rounded-circle d-inline-flex align-items-center justify-content-center`} style={{ width: 60, height: 60 }}>
+                  <i className={value.icon}></i>
+                </div>
+                <h5 className="mb-2">{value.title}</h5>
+                <p className="mb-0">{value.description}</p>
+              </div>
+            </Col>
           ))}
         </Row>
       </Container>
     </section>
-  );
-}
-
-// Sub-component for individual value cards
-function ValueCard({ value }: { value: any }) {
-  return (
-    <Col md={6} lg={3}>
-      <Card className="text-center border-0 shadow-sm pq-value-card h-100">
-        <Card.Body className="p-4">
-          <div
-            className={`pq-value-letter bg-${value.color} text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center`}
-            style={{
-              width: "60px",
-              height: "60px",
-              fontSize: "2rem",
-              fontWeight: "bold",
-            }}
-          >
-            {value.letter}
-          </div>
-          <i className={`${value.icon} fa-2x pq-text-${value.color} mb-3`}></i>
-          <Card.Title className="h5 mb-3">{value.title}</Card.Title>
-          <Card.Text className="text-muted small">
-            {value.description}
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </Col>
   );
 }

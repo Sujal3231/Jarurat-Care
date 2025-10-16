@@ -1,13 +1,13 @@
 import { Container, Row, Col } from "react-bootstrap";
 
-interface Feature {
+type Feature = {
   icon: string;
   title: string;
   description: string;
   color: string;
-}
+};
 
-export default function FeaturesSection(): JSX.Element {
+export default function FeaturesSection() {
   const features: Feature[] = [
     {
       icon: "fas fa-heartbeat",
@@ -19,22 +19,19 @@ export default function FeaturesSection(): JSX.Element {
     {
       icon: "fas fa-user-md",
       title: "Expert Doctors",
-      description:
-        "Our team of experienced healthcare professionals is dedicated to your well-being.",
+      description: "Our team of experienced healthcare professionals is dedicated to your well-being.",
       color: "success",
     },
     {
       icon: "fas fa-clock",
       title: "24/7 Service",
-      description:
-        "Round-the-clock medical services to ensure you receive care when you need it most.",
+      description: "Round-the-clock medical services to ensure you receive care when you need it most.",
       color: "warning",
     },
     {
       icon: "fas fa-hand-holding-heart",
       title: "Patient Support",
-      description:
-        "Comprehensive support system for patients and caregivers throughout their journey.",
+      description: "Comprehensive support system for patients and caregivers throughout their journey.",
       color: "info",
     },
   ];
@@ -47,8 +44,7 @@ export default function FeaturesSection(): JSX.Element {
             <span className="pq-section-badge">Why Choose Us</span>
             <h2 className="pq-section-title">Exceptional Healthcare Experience</h2>
             <p className="pq-section-description">
-              We are committed to providing the highest quality medical care with
-              compassion and innovation.
+              We are committed to providing the highest quality medical care with compassion and innovation.
             </p>
           </Col>
         </Row>
