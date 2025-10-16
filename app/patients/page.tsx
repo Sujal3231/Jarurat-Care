@@ -17,7 +17,7 @@ import PatientModal from '../components/PatientModal';
 import SearchBar from '../components/SearchBar';
 import AddPatientForm from '../components/AddPatientForm';
 
-export default function PatientsPage(): JSX.Element {
+export default function PatientsPage() {
   const dispatch = useDispatch<AppDispatch>();
   const { items, filteredItems, selectedPatient, searchQuery, loading, error } =
     useSelector((state: RootState) => state.patients);
