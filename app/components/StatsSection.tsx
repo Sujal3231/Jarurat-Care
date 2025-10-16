@@ -1,27 +1,30 @@
-import { Container, Row, Col } from "react-bootstrap";
+'use client';
 
-export default function StatsSection(): JSX.Element {
+import React, { ReactElement } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+
+export default function StatsSection(): ReactElement {
   const stats = [
     {
-      number: "10,000+",
-      label: "Patients Served",
-      icon: "fas fa-users"
+      number: '10,000+',
+      label: 'Patients Served',
+      icon: 'fas fa-users',
     },
     {
-      number: "50+",
-      label: "Expert Doctors",
-      icon: "fas fa-user-md"
+      number: '50+',
+      label: 'Expert Doctors',
+      icon: 'fas fa-user-md',
     },
     {
-      number: "24/7",
-      label: "Support Available",
-      icon: "fas fa-headset"
+      number: '24/7',
+      label: 'Support Available',
+      icon: 'fas fa-headset',
     },
     {
-      number: "98%",
-      label: "Satisfaction Rate",
-      icon: "fas fa-heart"
-    }
+      number: '98%',
+      label: 'Satisfaction Rate',
+      icon: 'fas fa-heart',
+    },
   ];
 
   return (

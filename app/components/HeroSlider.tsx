@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { ReactElement, useState, useEffect } from "react";
 import { Container, Row, Col, Carousel } from "react-bootstrap";
 import Link from "next/link";
 
@@ -14,7 +14,7 @@ interface Slide {
   buttonLink: string;
 }
 
-export default function HeroSlider(): JSX.Element {
+export default function HeroSlider(): ReactElement {
   const [index, setIndex] = useState(0);
 
   const slides: Slide[] = [
@@ -54,7 +54,6 @@ export default function HeroSlider(): JSX.Element {
     setIndex(selectedIndex);
   };
 
-  // Auto slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % slides.length);
@@ -67,9 +66,9 @@ export default function HeroSlider(): JSX.Element {
       <Carousel
         activeIndex={index}
         onSelect={handleSelect}
-        controls={true}
-        indicators={true}
-        fade={true}
+        controls
+        indicators
+        fade
         pause={false}
         className="pq-hero-carousel"
       >
@@ -84,7 +83,6 @@ export default function HeroSlider(): JSX.Element {
                 padding: "150px 0",
               }}
             >
-              {/* Background image */}
               <img
                 src={slide.background}
                 alt={slide.title.replace(/<br>/g, " ")}
@@ -98,12 +96,9 @@ export default function HeroSlider(): JSX.Element {
                   zIndex: 1,
                 }}
               />
-
-              {/* Overlay content */}
               <Container style={{ position: "relative", zIndex: 2 }}>
                 <Row>
                   <Col lg={6} className="pq-hero-content">
-                    {/* Subtitle */}
                     <div className="pq-hero-subtitle mb-3">
                       <span
                         className="pq-section-sub-title pq-text-dark"
@@ -117,8 +112,6 @@ export default function HeroSlider(): JSX.Element {
                         {slide.subtitle}
                       </span>
                     </div>
-
-                    {/* Title */}
                     <h1
                       className="pq-hero-title mb-4"
                       style={{
@@ -129,8 +122,6 @@ export default function HeroSlider(): JSX.Element {
                       }}
                       dangerouslySetInnerHTML={{ __html: slide.title }}
                     />
-
-                    {/* Description */}
                     <p
                       className="pq-hero-description mb-5"
                       style={{
@@ -142,8 +133,6 @@ export default function HeroSlider(): JSX.Element {
                     >
                       {slide.description}
                     </p>
-
-                    {/* Button */}
                     <Link
                       href={slide.buttonLink}
                       className="pq-button pq-hero-button"
@@ -159,9 +148,7 @@ export default function HeroSlider(): JSX.Element {
                           transition: "all 0.3s ease",
                         }}
                       >
-                        <span className="pq-button-text">
-                          {slide.buttonText}
-                        </span>
+                        <span className="pq-button-text">{slide.buttonText}</span>
                         <i className="fas fa-plus ms-2"></i>
                       </div>
                     </Link>
@@ -173,87 +160,7 @@ export default function HeroSlider(): JSX.Element {
         ))}
       </Carousel>
 
-      {/* Custom Styles for Carousel */}
-      <style jsx>{`
-        .pq-hero-carousel {
-          position: relative;
-        }
-
-        .pq-hero-carousel .carousel-control-prev,
-        .pq-hero-carousel .carousel-control-next {
-          width: 60px;
-          height: 60px;
-          background: rgba(255, 255, 255, 0.2);
-          border-radius: 50%;
-          top: 50%;
-          transform: translateY(-50%);
-          opacity: 0;
-          transition: all 0.3s ease;
-        }
-
-        .pq-hero-slider:hover .carousel-control-prev,
-        .pq-hero-slider:hover .carousel-control-next {
-          opacity: 1;
-        }
-
-        .pq-hero-button:hover .pq-button-block {
-          background: rgba(13, 39, 68, 1) !important;
-          transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(20, 69, 123, 0.3);
-        }
-
-        .pq-hero-carousel .carousel-control-prev {
-          left: 30px;
-        }
-
-        .pq-hero-carousel .carousel-control-next {
-          right: 30px;
-        }
-
-        .pq-hero-carousel .carousel-control-prev-icon,
-        .pq-hero-carousel .carousel-control-next-icon {
-          width: 20px;
-          height: 20px;
-        }
-
-        .pq-hero-carousel .carousel-indicators {
-          bottom: 30px;
-        }
-
-        .pq-hero-carousel .carousel-indicators button {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          margin: 0 5px;
-          background-color: rgba(255, 255, 255, 0.5);
-          border: none;
-        }
-
-        .pq-hero-carousel .carousel-indicators button.active {
-          background-color: var(--white);
-        }
-
-        @media (max-width: 768px) {
-          .pq-hero-title {
-            font-size: 36px !important;
-          }
-
-          .pq-hero-banner {
-            padding: 100px 0 !important;
-            min-height: 500px !important;
-            text-align: center;
-          }
-
-          .pq-hero-content {
-            text-align: center;
-          }
-
-          .pq-hero-description {
-            margin-left: auto;
-            margin-right: auto;
-          }
-        }
-      `}</style>
+    
     </section>
   );
 }

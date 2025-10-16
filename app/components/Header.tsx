@@ -1,18 +1,17 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
-export default function Header(): JSX.Element {
+export default function Header(): ReactElement {
   const pathname = usePathname();
   const [expanded, setExpanded] = useState(false);
 
   const scrollToFooter = () => {
     setExpanded(false); // Close mobile menu
     
-    // Use setTimeout to ensure the menu is closed before scrolling
     setTimeout(() => {
       const footerElement = document.getElementById('footer');
       if (footerElement) {
@@ -21,7 +20,6 @@ export default function Header(): JSX.Element {
           block: 'start'
         });
       } else {
-        // Fallback: scroll to bottom of page
         window.scrollTo({
           top: document.body.scrollHeight,
           behavior: 'smooth'
@@ -32,7 +30,6 @@ export default function Header(): JSX.Element {
 
   return (
     <>
-      {/* Main Navigation */}
       <Navbar 
         expand="lg" 
         className="pq-bottom-header pq-navbar-custom"
@@ -58,7 +55,6 @@ export default function Header(): JSX.Element {
           <Navbar.Toggle aria-controls="navbarSupportedContent" className="border-0" />
           
           <Navbar.Collapse id="navbarSupportedContent">
-            {/* Centered Navigation Links */}
             <Nav className="mx-auto">
               <Nav.Link 
                 as={Link} 
@@ -86,7 +82,6 @@ export default function Header(): JSX.Element {
               </Nav.Link>
             </Nav>
             
-            {/* Contact Us Button on the right */}
             <div className="d-flex ms-lg-3 mt-3 mt-lg-0">
               <Button 
                 variant="primary"
@@ -99,67 +94,6 @@ export default function Header(): JSX.Element {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-      <style jsx>{`
-        .pq-navbar-custom {
-          background-color: #eeeeeeff !important;
-          backdrop-filter: blur(10px);
-          border-bottom: 1px solid #e2e8f0;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-link-custom {
-          color: #475569 !important;
-          font-weight: 500;
-          padding: 0.5rem 1rem !important;
-          margin: 0 0.25rem;
-          border-radius: 0.5rem;
-          transition: all 0.3s ease;
-        }
-
-        .nav-link-custom:hover {
-          color: #2490eb !important;
-          background-color: #f1f5f9;
-        }
-
-        .nav-link-custom.active {
-          color: #2490eb !important;
-          background-color: #eff6ff;
-        }
-
-        .pq-nav-btn {
-          background: linear-gradient(135deg, #2490eb 0%, #1a73e8 100%);
-          border: none;
-          border-radius: 0.5rem;
-          padding: 0.5rem 1.5rem;
-          font-weight: 600;
-          transition: all 0.3s ease;
-          box-shadow: 0 2px 4px rgba(36, 144, 235, 0.2);
-        }
-
-        .pq-nav-btn:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 4px 8px rgba(36, 144, 235, 0.3);
-          background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);
-        }
-
-        /* Mobile menu styles */
-        @media (max-width: 991px) {
-          .pq-navbar-custom {
-            background-color: #ffffff !important;
-          }
-          
-          .nav-link-custom {
-            margin: 0.25rem 0;
-            text-align: center;
-          }
-          
-          .pq-nav-btn {
-            width: 100%;
-            margin-top: 0.5rem;
-          }
-        }
-      `}</style>
     </>
   );
 }

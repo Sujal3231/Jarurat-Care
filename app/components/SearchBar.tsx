@@ -1,5 +1,6 @@
 'use client';
 
+import React, { ReactElement } from 'react';
 import { Form, InputGroup, Button } from 'react-bootstrap';
 
 interface SearchBarProps {
@@ -7,7 +8,10 @@ interface SearchBarProps {
   onSearchChange: (query: string) => void;
 }
 
-export default function SearchBar({ searchQuery, onSearchChange }: SearchBarProps): JSX.Element {
+export default function SearchBar({
+  searchQuery,
+  onSearchChange,
+}: SearchBarProps): ReactElement {
   return (
     <InputGroup className="search-bar">
       <InputGroup.Text>
@@ -20,8 +24,8 @@ export default function SearchBar({ searchQuery, onSearchChange }: SearchBarProp
         onChange={(e) => onSearchChange(e.target.value)}
       />
       {searchQuery && (
-        <Button 
-          variant="outline-secondary" 
+        <Button
+          variant="outline-secondary"
           onClick={() => onSearchChange('')}
           title="Clear search"
         >

@@ -1,5 +1,8 @@
-import { Container, Row, Col, Card } from "react-bootstrap";
-import Link from "next/link";
+'use client';
+
+import React, { ReactElement } from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import Link from 'next/link';
 
 type Service = {
   icon: string;
@@ -8,25 +11,25 @@ type Service = {
   features: string[];
 };
 
-export default function ServicesSection() {
+export default function ServicesSection(): ReactElement {
   const services: Service[] = [
     {
-      icon: "fas fa-stethoscope",
-      title: "Medical Consultation",
-      description: "Professional medical consultations with experienced healthcare providers.",
-      features: ["Expert Diagnosis", "Personalized Treatment", "Follow-up Care"],
+      icon: 'fas fa-stethoscope',
+      title: 'Medical Consultation',
+      description: 'Professional medical consultations with experienced healthcare providers.',
+      features: ['Expert Diagnosis', 'Personalized Treatment', 'Follow-up Care'],
     },
     {
-      icon: "fas fa-ambulance",
-      title: "Emergency Care",
-      description: "Immediate medical attention for urgent healthcare needs.",
-      features: ["24/7 Availability", "Rapid Response", "Critical Care"],
+      icon: 'fas fa-ambulance',
+      title: 'Emergency Care',
+      description: 'Immediate medical attention for urgent healthcare needs.',
+      features: ['24/7 Availability', 'Rapid Response', 'Critical Care'],
     },
     {
-      icon: "fas fa-pills",
-      title: "Medication Management",
-      description: "Comprehensive medication guidance and management services.",
-      features: ["Prescription Management", "Dosage Guidance", "Side Effect Monitoring"],
+      icon: 'fas fa-pills',
+      title: 'Medication Management',
+      description: 'Comprehensive medication guidance and management services.',
+      features: ['Prescription Management', 'Dosage Guidance', 'Side Effect Monitoring'],
     },
   ];
 
@@ -54,7 +57,7 @@ export default function ServicesSection() {
   );
 }
 
-function ServiceCard({ service }: { service: Service }) {
+function ServiceCard({ service }: { service: Service }): ReactElement {
   return (
     <Card className="pq-service-card border-0 shadow-sm h-100">
       <Card.Body className="p-4">

@@ -1,19 +1,24 @@
+"use client";
+
+import React, { ReactElement } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 
-export default function MissionFocus(): JSX.Element {
+export default function MissionFocus(): ReactElement {
   const missionData = [
     {
       icon: "fas fa-hands-helping",
       title: "Our Mission",
-      description: "We're a community-driven NGO dedicated to bringing hope, care, and strength to patients, caregivers, and healthcare professionals across India. We stand by those affected by cancer, offering unwavering support every step of the way.",
-      bgColor: "primary"
+      description:
+        "We're a community-driven NGO dedicated to bringing hope, care, and strength to patients, caregivers, and healthcare professionals across India. We stand by those affected by cancer, offering unwavering support every step of the way.",
+      bgColor: "primary",
     },
     {
       icon: "fas fa-heart",
       title: "Our Focus",
-      description: "Creating a warm and inclusive space where everyone's needs are heard and met. Whether it's providing a comforting word, nutritional advice, or practical help, we're here to make the journey a little easier.",
-      bgColor: "success"
-    }
+      description:
+        "Creating a warm and inclusive space where everyone's needs are heard and met. Whether it's providing a comforting word, nutritional advice, or practical help, we're here to make the journey a little easier.",
+      bgColor: "success",
+    },
   ];
 
   return (
@@ -25,7 +30,9 @@ export default function MissionFocus(): JSX.Element {
               <Card className="h-100 border-0 shadow-lg pq-card-hover">
                 <Card.Body className="p-5 text-center">
                   <div className="pq-icon-wrapper mb-4">
-                    <div className={`pq-icon-circle bg-${item.bgColor} text-white shadow`}>
+                    <div
+                      className={`pq-icon-circle bg-${item.bgColor} text-white shadow`}
+                    >
                       <i className={`${item.icon} fa-2x`}></i>
                     </div>
                   </div>

@@ -1,4 +1,7 @@
-import { Container, Row, Col, Card } from "react-bootstrap";
+'use client';
+
+import React, { ReactElement } from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 type TeamMember = {
   name: string;
@@ -6,7 +9,7 @@ type TeamMember = {
   image: string;
 };
 
-export default function TeamSection() {
+export default function TeamSection(): ReactElement {
   const teamMembers: TeamMember[] = [
     { name: "Olivia Mestreza", position: "Patient Support Lead", image: "/team/olivia.jpg" },
     { name: "Richard Mills", position: "Care Coordination", image: "/team/richard.jpg" },
@@ -37,7 +40,7 @@ export default function TeamSection() {
   );
 }
 
-function TeamMemberCard({ member }: { member: TeamMember }) {
+function TeamMemberCard({ member }: { member: TeamMember }): ReactElement {
   return (
     <div className="pq-team-item">
       <Card className="border-0 shadow-sm h-100 pq-team-card">

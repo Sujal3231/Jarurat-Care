@@ -1,8 +1,10 @@
-"use client"; 
+"use client";
+
+import React, { ReactElement } from "react";
 import Link from 'next/link';
 import { Container, Row, Col } from 'react-bootstrap';
 
-export default function Footer(): JSX.Element {
+export default function Footer(): ReactElement {
   return (
     <footer id="footer" className="pq-bg-primary-dark">
       <div className="pq-footer-style-1">

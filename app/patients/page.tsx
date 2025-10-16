@@ -2,10 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Container, Row, Col, Button, Spinner, Alert, Toast, ToastContainer } from 'react-bootstrap';
+import { Container, Row, Col, Button, Alert, Toast, ToastContainer } from 'react-bootstrap';
 import { RootState, AppDispatch } from '../redux/store';
-import { fetchPatients, setSearchQuery, selectPatient, addPatient, deletePatient } from '../redux/patientsSlice';
-import { PatientFormData } from '@/types/patient';
+import {
+  fetchPatients,
+  setSearchQuery,
+  selectPatient,
+  addPatient,
+  deletePatient,
+} from '../redux/patientsSlice';
+import { PatientFormData, Patient } from '@/types/patient';
 import PatientCard from '../components/PatientCard';
 import PatientModal from '../components/PatientModal';
 import SearchBar from '../components/SearchBar';
@@ -13,8 +19,9 @@ import AddPatientForm from '../components/AddPatientForm';
 
 export default function PatientsPage(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
-  const { items, filteredItems, selectedPatient, searchQuery, loading, error } = useSelector((state: RootState) => state.patients);
-  
+  const { items, filteredItems, selectedPatient, searchQuery, loading, error } =
+    useSelector((state: RootState) => state.patients);
+
   const [showModal, setShowModal] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -42,31 +49,20 @@ export default function PatientsPage(): JSX.Element {
   const handleDeletePatient = (patientId: number) => {
     const patientToDelete = items.find(p => p.id === patientId);
     dispatch(deletePatient(patientId));
-    
+
     if (patientToDelete) {
       setToastMessage(`Patient ${patientToDelete.name} deleted successfully!`);
       setShowToast(true);
     }
-    
-    if (selectedPatient && selectedPatient.id === patientId) {
+
+    if (selectedPatient?.id === patientId) {
       setShowModal(false);
     }
   };
 
-  // if (loading) {
-  //   return (
-  //     <Container className="my-5">
-  //       <div className="pq-loading">
-  //         <Spinner animation="border" role="status" variant="primary">
-  //           <span className="visually-hidden">Loading...</span>
-  //         </Spinner>
-  //       </div>
-  //     </Container>
-  //   );
-  // }
-
   return (
     <Container className="my-5">
+      {/* Page Header */}
       <Row className="mb-4">
         <Col>
           <div className="pq-section pq-style-1 text-left">
@@ -79,6 +75,7 @@ export default function PatientsPage(): JSX.Element {
         </Col>
       </Row>
 
+      {/* Error */}
       {error && (
         <Alert variant="danger" className="mb-4">
           <i className="fas fa-exclamation-triangle me-2"></i>
@@ -86,20 +83,13 @@ export default function PatientsPage(): JSX.Element {
         </Alert>
       )}
 
-      {/* Search and Add Section */}
+      {/* Search and Add */}
       <Row className="mb-4">
         <Col md={8}>
-          <SearchBar 
-            searchQuery={searchQuery}
-            onSearchChange={handleSearch}
-          />
+          <SearchBar searchQuery={searchQuery} onSearchChange={handleSearch} />
         </Col>
         <Col md={4}>
-          <Button 
-            variant="success" 
-            onClick={() => setShowAddForm(true)}
-            className="w-100"
-          >
+          <Button variant="success" className="w-100" onClick={() => setShowAddForm(true)}>
             <i className="fas fa-plus me-2"></i>
             Add New Patient
           </Button>
@@ -122,8 +112,8 @@ export default function PatientsPage(): JSX.Element {
       <Row className="g-4">
         {filteredItems.map((patient) => (
           <Col key={patient.id} md={6} lg={4} xl={3}>
-            <PatientCard 
-              patient={patient} 
+            <PatientCard
+              patient={patient}
               onViewDetails={handleViewDetails}
               onDelete={handleDeletePatient}
             />
@@ -131,6 +121,7 @@ export default function PatientsPage(): JSX.Element {
         ))}
       </Row>
 
+      {/* Empty State */}
       {filteredItems.length === 0 && !loading && (
         <Row className="text-center my-5">
           <Col>
@@ -138,8 +129,8 @@ export default function PatientsPage(): JSX.Element {
               <i className="fas fa-users fa-3x mb-3"></i>
               <p>No patients found matching your search.</p>
               {searchQuery && (
-                <Button 
-                  variant="outline-primary" 
+                <Button
+                  variant="outline-primary"
                   onClick={() => handleSearch('')}
                   className="mt-2"
                 >
@@ -151,27 +142,25 @@ export default function PatientsPage(): JSX.Element {
         </Row>
       )}
 
-      {/* Patient Details Modal */}
-      <PatientModal 
+      {/* Modals */}
+      <PatientModal
         patient={selectedPatient}
         show={showModal}
         onHide={() => setShowModal(false)}
         onDelete={handleDeletePatient}
       />
-
-      {/* Add Patient Form Modal */}
-      <AddPatientForm 
+      <AddPatientForm
         show={showAddForm}
         onHide={() => setShowAddForm(false)}
         onAddPatient={handleAddPatient}
       />
 
-      {/* Success Toast */}
+      {/* Toast */}
       <ToastContainer position="top-end" className="p-3">
-        <Toast 
-          show={showToast} 
-          onClose={() => setShowToast(false)} 
-          delay={3000} 
+        <Toast
+          show={showToast}
+          onClose={() => setShowToast(false)}
+          delay={3000}
           autohide
           bg="success"
         >
@@ -179,9 +168,7 @@ export default function PatientsPage(): JSX.Element {
             <strong className="me-auto">Success</strong>
             <small>Just now</small>
           </Toast.Header>
-          <Toast.Body className="text-white">
-            {toastMessage}
-          </Toast.Body>
+          <Toast.Body className="text-white">{toastMessage}</Toast.Body>
         </Toast>
       </ToastContainer>
     </Container>

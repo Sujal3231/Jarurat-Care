@@ -1,7 +1,10 @@
+"use client";
+
+import React, { ReactElement } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
 
-export default function CTASection(): JSX.Element {
+export default function CTASection(): ReactElement {
   const scrollToFooter = () => {
     // Use setTimeout to ensure smooth scrolling
     setTimeout(() => {
@@ -12,7 +15,6 @@ export default function CTASection(): JSX.Element {
           block: "start",
         });
       } else {
-        // Fallback: scroll to bottom of page
         window.scrollTo({
           top: document.body.scrollHeight,
           behavior: "smooth",

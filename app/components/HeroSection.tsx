@@ -1,7 +1,10 @@
+"use client";
+
+import React, { ReactElement } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
 
-export default function HeroSection(): JSX.Element {
+export default function HeroSection(): ReactElement {
   return (
     <section className="pq-hero-section">
       <div className="pq-hero-background">
